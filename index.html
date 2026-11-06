@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎂 Tug'ilgan Kuning Muborak, Ota!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes balloon-rise {
+      0% { transform: translateY(110vh) rotate(0deg); opacity: 0.9; }
+      100% { transform: translateY(-130vh) rotate(15deg); opacity: 1; }
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    @keyframes flicker {
+      0%, 100% { transform: scaleY(1) skewX(0deg); opacity: 1; }
+      25% { transform: scaleY(1.15) skewX(-4deg); opacity: 0.9; }
+      50% { transform: scaleY(0.9) skewX(3deg); opacity: 1; }
+      75% { transform: scaleY(1.1) skewX(-2deg); opacity: 0.95; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(244, 63, 94, 0.4); }
+      50% { box-shadow: 0 0 70px rgba(250, 204, 21, 0.7); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .float { animation: float 4s ease-in-out infinite; }
+    .glow { animation: glow-pulse 3s ease-in-out infinite; }
+    .flame { animation: flicker 0.35s ease-in-out infinite alternate; transform-origin: bottom center; }
+    .balloon { position: fixed; bottom: -120px; z-index: 10; pointer-events: none; animation: balloon-rise linear forwards; }
+    .confetti { position: fixed; top: -20px; width: 10px; height: 10px; z-index: 50; animation: confetti-fall linear forwards; pointer-events: none; }
+    .shimmer-text {
+      background: linear-gradient(90deg, #f43f5e, #facc15, #22d3ee, #a855f7, #f43f5e);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .float, .glow, .flame, .balloon, .confetti, .shimmer-text { animation: none; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-900 to-rose-950 text-white font-sans flex flex-col items-center justify-center p-4 overflow-x-hidden">
+
+  <div id="fx-container"></div>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left: 5%; animation-duration: 14s; animation-delay: 0s;">
+    <div class="w-14 h-20 sm:w-16 sm:h-24 rounded-full bg-gradient-to-br from-rose-400 to-rose-600 shadow-lg"></div>
+    <div class="w-0.5 h-16 bg-rose-300/60 mx-auto"></div>
+  </div>
+  <div class="balloon" style="left: 85%; animation-duration: 17s; animation-delay: 3s;">
+    <div class="w-16 h-24 sm:w-20 sm:h-28 rounded-full bg-gradient-to-br from-cyan-300 to-blue-500 shadow-lg"></div>
+    <div class="w-0.5 h-20 bg-cyan-200/60 mx-auto"></div>
+  </div>
+  <div class="balloon" style="left: 15%; animation-duration: 20s; animation-delay: 6s;">
+    <div class="w-12 h-18 sm:w-14 sm:h-20 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 shadow-lg"></div>
+    <div class="w-0.5 h-14 bg-yellow-200/60 mx-auto"></div>
+  </div>
+  <div class="balloon" style="left: 75%; animation-duration: 15s; animation-delay: 9s;">
+    <div class="w-14 h-20 sm:w-16 sm:h-24 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-600 shadow-lg"></div>
+    <div class="w-0.5 h-16 bg-purple-200/60 mx-auto"></div>
+  </div>
+
+  <main class="w-full max-w-2xl mx-auto relative z-20 py-8">
+
+    <!-- Main card -->
+    <div class="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-6 sm:p-12 text-center glow">
+
+      <!-- Birthday cake -->
+      <div class="flex flex-col items-center justify-end mb-6" style="height: 150px;">
+        <!-- Candles row -->
+        <div class="flex gap-4 sm:gap-6 items-end relative z-10">
+          <div class="flex flex-col items-center">
+            <div class="flame w-3 h-5 sm:w-4 sm:h-7 rounded-full bg-gradient-to-b from-yellow-200 via-orange-400 to-red-500 blur-[1px] shadow-[0_0_20px_rgba(251,146,60,0.9)]"></div>
+            <div class="w-2 h-10 sm:w-2.5 sm:h-14 bg-gradient-to-b from-pink-300 to-pink-500 rounded-t"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="flame w-4 h-7 sm:w-5 sm:h-9 rounded-full bg-gradient-to-b from-yellow-200 via-orange-400 to-red-500 blur-[1px] shadow-[0_0_25px_rgba(251,146,60,1)]" style="animation-delay: 0.15s;"></div>
+            <div class="w-2.5 h-14 sm:w-3 sm:h-20 bg-gradient-to-b from-cyan-300 to-blue-500 rounded-t"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="flame w-3 h-5 sm:w-4 sm:h-7 rounded-full bg-gradient-to-b from-yellow-200 via-orange-400 to-red-500 blur-[1px] shadow-[0_0_20px_rgba(251,146,60,0.9)]" style="animation-delay: 0.3s;"></div>
+            <div class="w-2 h-10 sm:w-2.5 sm:h-14 bg-gradient-to-b from-yellow-200 to-amber-500 rounded-t"></div>
+          </div>
+        </div>
+        <!-- Cake layers (tepadan pastga: kichik → katta) -->
+        <div class="relative flex flex-col items-center">
+          <div class="w-32 h-8 sm:w-44 sm:h-10 bg-gradient-to-b from-pink-200 to-pink-300 rounded-t-xl shadow-lg"></div>
+          <div class="w-44 h-10 sm:w-60 sm:h-14 bg-gradient-to-b from-rose-300 to-rose-400 shadow-lg"></div>
+          <div class="w-56 h-12 sm:w-76 sm:h-16 bg-gradient-to-b from-amber-200 to-amber-300 rounded-b-2xl shadow-2xl"></div>
+          <!-- Icing drips (pastki qatlam ustida) -->
+          <div class="absolute top-0 left-0 w-56 sm:w-76 h-3 flex justify-around overflow-hidden">
+            <div class="w-3 h-5 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-7 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-4 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-6 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-5 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-7 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-4 bg-pink-100 rounded-b-full"></div>
+            <div class="w-3 h-6 bg-pink-100 rounded-b-full"></div>
+          </div>
+          <!-- Cake decorations -->
+          <div class="absolute top-3 left-5 text-lg sm:text-2xl">🍓</div>
+          <div class="absolute top-3 right-5 text-lg sm:text-2xl">🍓</div>
+          <div class="absolute top-2 left-1/2 -translate-x-1/2 text-base sm:text-xl">🌸</div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl sm:text-6xl font-extrabold shimmer-text leading-tight mb-3">
+        Tug'ilgan Kuning<br />Muborak bo'lsin!
+      </h1>
+
+      <p class="text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-rose-400 to-fuchsia-400 mb-2">
+        🎉 Qadrli Otam — Maqsud 🎉
+      </p>
+      <p class="text-sm sm:text-base text-rose-200/80 mb-4">Aziz otam, 39 yoshingiz muborak bo'lsin!</p>
+
+      <!-- Blow candle button -->
+      <button id="blow-btn" class="mb-6 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold rounded-full shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 text-base sm:text-lg">
+        🕯️ Shamni o'chirish
+      </button>
+
+      <!-- Wishes -->
+      <div class="space-y-3 text-left mb-8">
+        <div class="bg-white/10 rounded-xl px-4 py-3 border border-white/10 text-sm sm:text-base">
+          👨‍👧‍👦 <span class="text-rose-200">Otam, siz bizning eng katta davomiz va eng yaqin doiramizsiz. Umringiz uzoq bo'lsin!</span>
+        </div>
+        <div class="bg-white/10 rounded-xl px-4 py-3 border border-white/10 text-sm sm:text-base">
+          � <span class="text-pink-200">Sizga ko'p mehnat, sog'lik va baxt tilayman. Har kuningiz barokat bilan kechsin!</span>
+        </div>
+        <div class="bg-white/10 rounded-xl px-4 py-3 border border-white/10 text-sm sm:text-base">
+          ⭐ <span class="text-yellow-200">Barcha orzularingiz amalga oshsin! Meni katta qilganingiz uchun katta rahmat, otam! ❤️</span>
+        </div>
+      </div>
+
+      <!-- Date badge -->
+      <div class="inline-block bg-gradient-to-r from-rose-500/30 to-purple-500/30 border border-rose-400/30 rounded-2xl px-6 py-3 mb-6">
+        <p class="text-xs sm:text-sm text-rose-200">Bugungi sana</p>
+        <p class="text-lg sm:text-2xl font-bold text-white">2026.11.06</p>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-center text-purple-200/60 text-xs sm:text-sm">
+        💜 Farzandingiz mehr bilan · Qadrli otam Maqsud uchun tayyorlandi
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // ===== Confetti =====
+    const COLORS = ['#f43f5e', '#a855f7', '#3b82f6', '#22c55e', '#facc15', '#f97316', '#06b6d4', '#ec4899'];
+    const fx = document.getElementById('fx-container');
+
+    function launchConfetti(count = 100) {
+      for (let i = 0; i < count; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+        c.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+        c.style.animationDelay = Math.random() * 2 + 's';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        fx.appendChild(c);
+        setTimeout(() => c.remove(), 7000);
+      }
+    }
+
+    // ===== Blow candles =====
+    let candlesOut = false;
+    document.getElementById('blow-btn').addEventListener('click', () => {
+      candlesOut = !candlesOut;
+      const flames = document.querySelectorAll('.flame');
+      const btn = document.getElementById('blow-btn');
+      if (candlesOut) {
+        flames.forEach(f => f.style.opacity = '0');
+        btn.textContent = '🔥 Shamni yoqish';
+        launchConfetti(150);
+        playHappyBirthday();
+      } else {
+        flames.forEach(f => f.style.opacity = '1');
+        btn.textContent = "🕯️ Shamni o'chirish";
+      }
+    });
+
+    // ===== Simple Happy Birthday melody (Web Audio) =====
+    function playHappyBirthday() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [
+          [523.25, 0.4], [523.25, 0.2], [587.33, 0.6], [523.25, 0.6], [698.46, 0.6], [659.25, 1.0],
+          [523.25, 0.4], [523.25, 0.2], [587.33, 0.6], [523.25, 0.6], [783.99, 0.6], [698.46, 1.0]
+        ];
+        let t = ctx.currentTime;
+        notes.forEach(([freq, dur]) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.25, t);
+          gain.gain.exponentialRampToValueAtTime(0.01, t + dur);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + dur);
+          t += dur * 0.9;
+        });
+      } catch (e) { /* audio unsupported */ }
+    }
+
+    // Auto confetti on load
+    window.addEventListener('load', () => launchConfetti(80));
+  </script>
+</body>
+</html>
